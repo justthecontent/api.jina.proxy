@@ -56,12 +56,43 @@ npm run docker:run
 
 `GET /read?url=<encoded-url>`
 
-Makes a proxied request to the Jina AI API.
+Makes a proxied request to the Jina AI API. The Jina AI API can be used for various document processing tasks:
 
-Example:
+#### Common Use Cases:
+
+1. **Document Reading & Analysis**
+   - Extract text from PDFs, Word documents, and images
+   - Parse structured data from documents
+   - Convert documents to different formats
+
+2. **Web Scraping & Processing**
+   - Extract content from web pages
+   - Process HTML content
+   - Parse news articles and blog posts
+
+3. **Content Extraction**
+   - Extract tables from documents
+   - Pull specific sections or paragraphs
+   - Identify headers and metadata
+
+4. **Document Intelligence**
+   - Analyze document layout
+   - Extract key-value pairs
+   - Identify document types
+
+Example Request:
 ```bash
-curl "http://localhost:3000/read?url=your-encoded-url"
+# Extract content from a PDF
+curl "http://localhost:3000/read?url=https://example.com/document.pdf"
+
+# Process a webpage
+curl "http://localhost:3000/read?url=https://news-article.com/story"
+
+# Extract tables from a document
+curl "http://localhost:3000/read?url=https://example.com/report.xlsx"
 ```
+
+Response formats vary based on the document type and processing requested. The server handles both JSON and text responses appropriately.
 
 ## Error Handling
 
