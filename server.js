@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const JINA_BASE_URL = 'https://r.jina.ai/';
+const JINA_BASE_URL = 'https://reader-production-b375.up.railway.app/';
 
 app.get('/read', async (req, res) => {
   try {
