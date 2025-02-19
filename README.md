@@ -52,6 +52,35 @@ npm run docker:run
 
 ## API Usage
 
+### DeepSearch Chat Endpoint
+
+`POST /deepsearch/chat`
+
+Handle complex queries with Jina's DeepSearch API supporting streaming responses and adjustable reasoning effort. The server automatically adds your Jina API key for authentication.
+
+Example Request:
+```bash
+curl -X POST http://localhost:3000/deepsearch/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {"role": "user", "content": "What's the latest blog post from Jina AI?"}
+    ],
+    "stream": true,
+    "reasoning_effort": "medium"
+  }'
+```
+
+Parameters:
+- `messages`: Array of message objects with role (user/assistant) and content
+- `model`: DeepSearch model version (default: jina-deepsearch-v1)
+- `stream`: Enable Server-Sent Events (SSE) streaming (default: true)
+- `reasoning_effort`: Processing intensity level (low/medium/high)
+
+Response:
+- Streaming (text/event-stream): Real-time SSE events with data chunks
+- Non-streaming (application/json): Standard JSON response with complete answer
+
 ### Read Endpoint
 
 `GET /read?url=<encoded-url>`
